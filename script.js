@@ -14,6 +14,13 @@ function setup() {
       level[l+2*i+1][20-(2+2*i)] = 1
     }
   }
+  soundtrackFiles[0].play();
+}
+
+function preload(){
+  for(let i = 0; i < soundtrackFiles.length; i++){
+    soundtrackFiles[i] = loadSound(soundtrackFiles[i])
+  }
 }
 
 function saveVersion(){
@@ -25,6 +32,8 @@ function getVersion(){
   return {version:0,changelog:changelog,versionName:"0.1a"}
 }
 
+let currentPos = 0;
+let playlistPos = 0;
 let version = 0;
 let changelog = `
 Additions:
@@ -38,7 +47,7 @@ Bullets no longer affect enemies when paused
 Removals:
 None
 `;
-let versionName = "0.1a";
+let versionName = "0.0.1a";
 let waveLength = 20;
 let wave = 0;
 let soundtrackFiles = ["song1.mp3","song2.mp3","song3.mp3"];
@@ -66,6 +75,13 @@ let gPressed = false;
 let shoot = false;
 
 function draw() {
+  if(!soundtrackFiles[playlistPos].isPlaying()){
+    soundtrackFiles[playlistPos].play();
+    playlistPos++;
+    if(playlistPos>soundtrackFiles.length){
+      playlistPos = 0;
+    }
+  }
   //For debug only, remove later
   if(keyIsDown(71)&&!gPressed){
     screen+=1;
