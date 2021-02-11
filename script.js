@@ -29,24 +29,22 @@ function saveVersion(){
 }
 
 function getVersion(){
-  return {version:0,changelog:changelog,versionName:"0.1a"}
+  return {version:1,changelog:changelog,versionName:"0.0.1a"}
 }
 
 let playlistPos = 0;
-let version = 0;
+let version = 1;
 let changelog = `
 Additions:
-Wave System
-Version System
+The game now has music! There are three AI generated songs.
 
 Bugfixes:
-Enemies no longer disappear when paused
-Bullets no longer affect enemies when paused
+None
 
 Removals:
 None
 `;
-let versionName = "0.0.1a";
+let versionName = "0.0.2a";
 let waveLength = 20;
 let wave = 0;
 let soundtrackFiles = ["song1.mp3","song2.mp3","song3.mp3"];
