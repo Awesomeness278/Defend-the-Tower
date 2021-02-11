@@ -32,7 +32,6 @@ function getVersion(){
   return {version:0,changelog:changelog,versionName:"0.1a"}
 }
 
-let currentPos = 0;
 let playlistPos = 0;
 let version = 0;
 let changelog = `
@@ -76,8 +75,8 @@ let shoot = false;
 
 function draw() {
   if(!soundtrackFiles[playlistPos].isPlaying()){
-    soundtrackFiles[playlistPos].play();
     playlistPos++;
+    soundtrackFiles[playlistPos].play();
     if(playlistPos>soundtrackFiles.length){
       playlistPos = 0;
     }
